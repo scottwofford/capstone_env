@@ -3,7 +3,7 @@
 pkill -f "/app/src/app.py" 2>/dev/null || true
 nohup python3 /app/src/app.py > /app/app.log 2>&1 &
 for _ in $(seq 1 20); do
-  if curl -s -o /dev/null http://localhost:8000/; then
+  if curl -s -o /dev/null http://localhost:8000/todos; then
     echo "app.py listening on :8000"
     exit 0
   fi

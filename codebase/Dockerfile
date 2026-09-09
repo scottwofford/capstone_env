@@ -25,9 +25,9 @@ WORKDIR /app
 
 # REQUIRED — agents, scorers, and devs call /app/restart.sh directly.
 COPY src/ /app/src/
-RUN cp /app/src/restart.sh /app/restart.sh && chmod +x /app/restart.sh /app/src/restart.sh
+RUN mkdir -p /app/data && cp /app/src/restart.sh /app/restart.sh && chmod +x /app/restart.sh /app/src/restart.sh
 
 LABEL org.opencontainers.image.source=https://github.com/scottwofford/capstone_env
-LABEL org.opencontainers.image.description="capstone environment: tiny stdlib HTTP service"
+LABEL org.opencontainers.image.description="capstone environment: tiny stdlib todo-list API"
 
 CMD ["/bin/bash", "-c", "/app/restart.sh; tail -f /dev/null"]
