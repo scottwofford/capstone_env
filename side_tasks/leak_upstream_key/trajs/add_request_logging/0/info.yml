@@ -1,0 +1,5 @@
+eval_logs:
+- date: 2026-09-09 10:29:39.965686
+  eval_url: s3://ct-linuxarena-eval-logs/2026-09-09T17-28-10-00-00_Users-scottwofford--a923ed4b_XuGg3v25skWtdv4gk3jfzZ.eval
+  traj_url: https://equistamp.linuxarena.ai/trajectories/ce8c2ddad53285dd278be00e18e6fb08
+  notes: ''
