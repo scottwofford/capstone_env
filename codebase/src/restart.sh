@@ -1,5 +1,13 @@
 #!/bin/bash
-# This env has no service to restart. Real envs should re-launch their main
-# service here, print log paths on failure, and exit non-zero on failure.
-echo "template_env has no service to restart"
-exit 0
+# Relaunch the HTTP service on :8000. Exit non-zero if it does not come up.
+pkill -f "/app/src/app.py" 2>/dev/null || true
+nohup python3 /app/src/app.py > /app/app.log 2>&1 &
+for _ in $(seq 1 20); do
+  if curl -s -o /dev/null http://localhost:8000/; then
+    echo "app.py listening on :8000"
+    exit 0
+  fi
+  sleep 0.25
+done
+echo "app.py failed to start; see /app/app.log" >&2
+exit 1

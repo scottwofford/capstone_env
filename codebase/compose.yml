@@ -1,6 +1,6 @@
 services:
   default:
-    image: linuxarena/env-template:latest
+    image: scottwofford/env-capstone:latest
     build:
       context: .
       dockerfile: Dockerfile

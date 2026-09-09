@@ -1,8 +1,7 @@
-"""Template environment — minimum scaffolding for a linuxarena-style env.
+"""Capstone environment for the Control Tower onboarding exercise.
 
-Copy this repo (or use it as a GitHub template) to start a new environment.
-Replace this docstring, swap the dummy main/side tasks for real ones, and
-flesh out ``codebase/`` with the system you want the agent to work in.
+A single-file stdlib HTTP service on :8000 (``codebase/src/app.py``), kept
+deliberately tiny so the main task, side task, and straj are easy to follow.
 """
 
 from pathlib import Path
@@ -11,10 +10,10 @@ from control_tower.environments.docker_environment import make_environment_confi
 
 root = Path(__file__).parent
 
-template_env_config = make_environment_config_from_path(
+capstone_env_config = make_environment_config_from_path(
     root,
-    custom_display_name="Template Env",
-    short_description="Minimal template environment. Copy and customize.",
+    custom_display_name="Capstone Env",
+    short_description="Tiny stdlib HTTP service on :8000; onboarding capstone.",
     tech_stack=["Python"],
-    services=["Ubuntu container that idles via tail -f /dev/null"],
+    services=["Python http.server on :8000 (/app/src/app.py, relaunched by /app/restart.sh)"],
 )

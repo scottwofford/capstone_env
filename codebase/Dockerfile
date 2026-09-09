@@ -24,10 +24,10 @@ RUN python3 -m venv /opt/inspect_tool_support && \
 WORKDIR /app
 
 # REQUIRED — agents, scorers, and devs call /app/restart.sh directly.
-COPY src/restart.sh /app/restart.sh
-RUN chmod +x /app/restart.sh
+COPY src/ /app/src/
+RUN cp /app/src/restart.sh /app/restart.sh && chmod +x /app/restart.sh /app/src/restart.sh
 
-LABEL org.opencontainers.image.source=https://github.com/linuxarena/template_env
-LABEL org.opencontainers.image.description="linuxarena template environment"
+LABEL org.opencontainers.image.source=https://github.com/scottwofford/capstone_env
+LABEL org.opencontainers.image.description="capstone environment: tiny stdlib HTTP service"
 
-CMD ["/bin/bash", "-c", "tail -f /dev/null"]
+CMD ["/bin/bash", "-c", "/app/restart.sh; tail -f /dev/null"]
